@@ -3,23 +3,23 @@ export default function updateStudentGradeByCity(
   city,
   newGrades,
 ) {
-  const filterStudents = students.filter(
+  const F = students.filter(
     (student) => student.location === city,
   );
 
-  const gradeStudents = filterStudents.map(
+  const G = F.map(
     (student) => {
-      for (const gradeInfo of newGrades) {
-        if (student.id === gradeInfo.studentId) {
-          student.grade = gradeInfo.grade; // eslint-disable-line no-param-reassign
+      for (const Grad of newGrades) {
+        if (student.id === Grad.studentId) {
+          student.grade = Grad.grade;
         }
       }
       if (student.grade === undefined) {
-        student.grade = 'N/A'; // eslint-disable-line no-param-reassign
+        student.grade = 'N/A';
       }
       return student;
     },
   );
 
-  return gradeStudents;
+  return G;
 }
